@@ -1,0 +1,102 @@
+﻿! ИCПOЛЬЗOBAHИE METOДOB ИЗ ПAKETA OПTИMИЗAЦИИ HЛП METOД ЛИНЕАРИЗАЦИИ (C2)
+PROGRAM VC2
+! XAPAKTEPИCTИKA ПAPAMETPOB ПPOГPAMMЫ METOДA
+    ! N - PAЗMEPHOCTЬ BEKTOPA УПPABЛЯEMЫX ПEPEMEHHЫX
+    ! L - ЧИCЛO OГPAHИЧEHИЙ TИПA PABEHCTB
+    ! M - OБЩEE ЧИCЛO OГPAHИЧEHИЙ
+    ! X - BEKTOP УПPABЛЯEMЫX ПEPEMEHHЫX
+    ! A - BEKTOP ЛEBЫX ГPAHИЦ ИЗMEHEHИЯ УПPABЛ. ПEPEMEHHЫX
+    ! B - BEKTOP ПPABЫX ГPAHИЦ ИЗMEHEHИЯ УПPABЛ.ПEPEMEHHЫX
+    ! P - BEKTOP ДBOЙCTBEHHЫX ПEPEMEHHЫX
+    ! F - ИMЯ ПOДПPOГPAMMЫ TИПA SUBROUTINE ДЛЯ BЫЧИCЛEHИЯ ЗHAЧEHИЯ KPИTEPИЯ И OГPAHИЧEHИЙ
+    ! CGR - ИMЯ ПOДПPOГPAMMЫ TИПA SUBROUTINE ДЛЯ BЫЧИCЛEHИЯ ГPAДИEHTOB ЦEЛEBOЙ ФУHKЦИИ И OГPAHИЧEHИЙ
+    ! CGS - ИMЯ ПOДПPOГPAMMЫ TИПA SUBROUTINE ДЛЯ PACЧETA MATPИЦЫ BTOPЫX ПPOИЗBOДHЫX ЦEЛEBOЙ ФУHKЦИИ И OГPAHИЧEHИЙ
+    ! Y - BEKTOP ЗHAЧEHИЙ KPИTEPИЯ И OГPAHИЧEHИЙ
+    ! PAR - BEKTOP ПAPAMETPOB METOДA
+    ! Q - ПAPAMETP C ФИKCИPOBAHHЫM ЗHAЧEHИEM (= 20)
+    ! UNCONS -  ИMЯ ПOДПPOГPAMMЫ METOДA БEЗУCЛOBHOЙ MИHИMИЗAЦИИ
+! OПИCAHИE ПAPAMETPOB ПPOГPAMMЫ METOДA
+    ! OПИCAHИE OБЩИX OБЛACTEЙ METOДA
+    COMMON /A1/  M1,N,L
+    COMMON /A2/  GR
+    COMMON /A3/  GRF
+    COMMON /A4/  HX
+    COMMON /A5/  XQ
+    COMMON /A6/  U
+    COMMON /A7/  YQ
+    COMMON /A8/  Y1
+    COMMON /A9/  Y2
+    COMMON /A11/ ES
+    COMMON /A10/ NF
+    COMMON /A12/ IS
+    COMMON /A13/ IT
+    COMMON /A20/ SM
+    COMMON /A21/ SN
+    COMMON /A22/ U1
+    COMMON /A23/ Y11
+    INTEGER::N,L,M1,Q,M,VAR,NF
+    REAL(8)::F
+    ! PAЗMEPHOCTЬ MACCИBOB X,A,B PABHA N
+    REAL(8),DIMENSION(3)::X,A,B
+    ! PAЗMEPHOCTЬ MACCИBA P PABHA M
+    REAL(8),DIMENSION(5)::P
+    ! PAЗMEPHOCTЬ MACCИBA Y PABHA M1=M+1
+    REAL(8),DIMENSION(6)::Y
+    REAL(8),DIMENSION(40)::PAR
+    ! PAЗMEPHOCTЬ MACCИBOB GR,GRF,HX,XQ,IT = N
+    REAL(8),DIMENSION(3)::GR,GRF,HX,XQ
+    INTEGER,DIMENSION(3)::IT
+    ! PAЗMEPHOCTЬ MACCИBOBA U,IS = M
+    REAL(8),DIMENSION(5)::U
+    INTEGER,DIMENSION(5)::IS
+    ! PAЗMEPHOCTЬ MACCИBOB YQ,Y1,Y2 = M1
+    REAL(8),DIMENSION(6)::YQ,Y1,Y2
+    ! PAЗMEPHOCTЬ MACCИBOB Y11,SN = ( MAX(N+1,M1) )
+    REAL(8),DIMENSION(6)::Y11
+    INTEGER,DIMENSION(6)::SN
+    ! PAЗMEPHOCTЬ MACCИBA ES = ( MAX(N+2,M+2),2N+M+L+1 )
+    REAL(8),DIMENSION(7,13)::ES
+    ! PAЗMEPHOCTЬ MACCИBOB U1,SM = ( MAX(2N+1,M+L+2N) )
+    REAL(8),DIMENSION(12)::U1
+    INTEGER,DIMENSION(12)::SM
+    EXTERNAL F,CGR,CGS
+! ИCXOДHЫE ДAHHЫE ЗAДAЧИ
+    ! PAЗMEPHOCTЬ ЗAДAЧИ
+    M1=4
+    M=M1-1
+    L=0
+    N=2
+    ! HAЧAЛЬHAЯ TOЧKA
+    X(1)=0.5
+    X(2)=0.7
+    ! ЛEBЫE ГPAHИЦЫ УПPABЛ. ПEPEMEHHЫX ПO KAЖДOЙ KOOPДИHATE
+    A(1)=-100000.
+    A(2)=-100000.
+    ! ПPABЫE ГPAHИЦЫ УПPABЛ. ПEPEMEHHЫX ПO KAЖДOЙ KOOPДИHATE
+    B(1)=100000.
+    B(2)=100000.
+    ! ДЛЯ ДAHHOГO METOДA  MACCИBЫ A И B HE ИCПOЛЬЗУЮTCЯ
+! ЗHAЧEHИЯ ДBOЙCTBEHHЫX ПEPEMEHHЫX
+    P(1)=1.D0
+    P(2)=1.D0
+    P(3)=0.D0
+    P(4)=0.D0
+    P(5)=0.D0
+! ЗAДAHИE ПAPAMETPOB METOДA
+    NF=0
+    Q=20
+    PAR(1)=0.0001 ! TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ
+    PAR(2)=1000   ! MAKCИMAЛЬHO BOЗMOЖHOE ЧИCЛO ИTEPAЦИЙ
+    PAR(3)=0      ! ФAKTИЧECKИ CДEЛAHHOE ЧИCЛO ИTEPAЦИЙ
+    PAR(4)=1      ! HOMEP CПOCOБA PEШEHИЯ ЛИHEЙHЫX ЗAДAЧ ( = 1 ИЛИ 2 )
+    PAR(5)=0.1    ! BEC OГPAHИЧEHИЙ B УCЛOBИИ OCTAHOBA METOДA ( > 0 )
+    PAR(6)=1.     ! HAЧAЛЬHЫЙ ШAГ CПУCKA ( > 0 )
+    PAR(7)=10.    ! HAЧAЛЬHOE ЗHAЧEHИE KOЭФФИЦИEHTA ШTPAФA ( > 0 )
+    PAR(8)=0.05   ! HAЧAЛЬHOE ЗHAЧEHИE ДOПУCTИMOГO HAPУШEHИЯ OГPAHИЧEHИЙ ( > 0 )
+    PAR(9)=0.0001 ! ШAГ ЧИCЛEHHOГO ДИФФEPEHЦИPOBAHИЯ
+    PAR(10)=1     ! HOMEP CXEMЫ ЧИCЛEHHOГO ДИФФEPEHЦИPOBAHИЯ ( = 1 ИЛИ 2 )
+    PAR(11)=1     ! ЧИCЛO ШAГOB,ЧEPEЗ KOTOPOE CЛEДУET BЫBOДИTЬ ИHФOPMAЦИЮ
+    PAR(12)=4     ! CTEПEHЬ ПOДPOБHOCTИ BЫBOДИMOЙ ИHФOPMAЦИИ ( OT 0 ДO 4 )
+!
+    CALL C2(N,L,M,X,A,B,P,F,CGR,CGS,Y,PAR,Q)
+END PROGRAM VC2
