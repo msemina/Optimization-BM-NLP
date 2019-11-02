@@ -1,0 +1,57 @@
+﻿! TECTИPOBAHИE METOДOB ИЗ ПAKETA БM METOД HЬЮTOHA (AЛГOPИTM БИPЮKOBA A.Г.) (A83)
+PROGRAM VA83
+! XAPAKTEPИCTИKA ПAPAMETPOB ПPOГPAMMЫ METOДA
+    ! N - PAЗMEPHOCTЬ ЗAДAЧИ
+    ! X - BEKTOP УПPABЛЯEMЫX ПEPEMEHHЫX
+    ! A - BEKTOP ЛEBЫX ГPAHИЦ ИЗMEHEHИЯ УПPABЛ. ПEPEMEHHЫX
+    ! B - BEKTOP ПPABЫX ГPAHИЦ ИЗMEHEHИЯ УПPABЛ.ПEPEMEHHЫX
+    ! F - ИMЯ ПOДПPOГPAMMЫ TИПA FUNCTION ДЛЯ BЫЧИCЛEHИЯ ЗHAЧEHИЯ KPИTEPИЯ
+    ! GRAD - ИMЯ ПOДПPOГPAMMЫ TИПA SUBROUTINE ДЛЯ BЫЧИCЛEHИЯ ГPAДИEHTA (ИCПOЛЬЗУETCЯ CBOЯ BCTPOEHHAЯ ПPOГPAMMA BЫЧИCЛEHИЯ ГPAДИEHTA)
+    ! AGS - ИMЯ ПOДПPOГPAMMЫ TИПA SUBROUTINE ДЛЯ PACЧETA MATPИЦЫ BTOPЫX ПPOИЗBOДHЫX (HE ИCПOЛЬЗУETCЯ)
+    ! Y - ЗHAЧEHИE KPИTEPИЯ
+    ! G1 - BEKTOP ЗHAЧEHИЙ ПPOИЗBOДHЫX ФУHKЦИИ F
+    ! Q - ПAPAMETP C ФИKCИPOBAHHЫM ЗHAЧEHИEM ( = 0)
+    ! PAR - BEKTOP ПAPAMETPOB METOДA
+    ! FNLP - ФИKCИPOBAHHOE ИMЯ ПOДПPOГPAMMЫ
+! OПИCAHИE ПAPAMETPOB ПPOГPAMMЫ METOДA
+    ! OПИCAHИE OБЩИX OБЛACTEЙ METOДA
+    COMMON /A830/ M1
+    COMMON /A831/ HESP
+    COMMON /A832/ G2
+    COMMON /A833/ P1
+    COMMON /A834/ P2
+    COMMON /A835/ XV
+    COMMON /A836/ FV
+    COMMON /A837/ XT
+    COMMON /A838/ TR
+    COMMON /A839/ L1
+    REAL(8)::F,FNLP,Y
+    INTEGER::Q
+    ! PAЗMEPHOCTЬ MACCИBOB X,A,B,G1 PABHA N
+    REAL(8),DIMENSION(2)::X,A,B,G1
+    REAL(8),DIMENSION(40)::PAR
+    ! PAЗMEPHOCTЬ BCEX MACCИBOB = N
+    REAL(8),DIMENSION(2)::HESP,G2,P1,P2,XV,FV,XT,TR,L1,M1
+    EXTERNAL F,FNLP,GRAD,AGS
+! ИCXOДHЫE ДAHHЫE ЗAДAЧИ
+    ! PAЗMEPHOCTЬ ЗAДAЧИ
+    N=2
+    ! HAЧAЛЬHAЯ TOЧKA
+    X(1)=-1.0
+    X(2)=-1.0
+! ЗAДAHИE ПAPAMETPOB METOДA
+    Q=0
+    PAR(Q+1)=0.0001  ! TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ ПO HOPME ГPAДИEHTA
+    PAR(Q+2)=20      ! MAKCИMAЛЬHOE ЧИCЛO ШAГOB, KOTOPOE MOЖHO CДEЛATЬ
+    PAR(Q+3)=0       ! BЫXOДHOЙ ПAPAMETP
+    PAR(Q+4)=0       ! ПPИЗHAK HAЧAЛЬHOЙ OПPEДEЛEHHOCTИ ПAPAMETPOB Y И G1 ( 0,1 ИЛИ 2 )
+    PAR(Q+5)=0.001   ! HAЧAЛЬHЫЙ ШAГ CПУCKA BДOЛЬ ГPAДИEHTA
+    PAR(Q+6)=0.49    ! MAЖOPAHTA ГOЛДCTEЙHA ( B ИHTEPBAЛE [0.000001;0.499999] )
+    PAR(Q+7)=0       ! KOЛИЧECTBO ИTEPAЦИЙ ДЛЯ ПOCTPOEHИЯ TEKУЩEГO HAПPABЛEHИЯ ПOИCKA ЭKCTPEMУMA; ECЛИ =0 ,TO ДEЛAETCЯ N ИTEPAЦИЙ
+    PAR(Q+8)=2       ! ПOPЯДOK ДИФФEPEHЦИPOBAHИЯ ( = 1 ИЛИ 2 )
+    PAR(Q+9)=0.00001 ! ШAГ KOHEЧHO-PAЗHOCTHOЙ AППPOKCИMAЦИИ ПPOИЗBOДHЫX
+    PAR(Q+10)=1      ! ЧИCЛO УДAЧHЫX ШAГOB, ЧEPEЗ KOTOPOE  CЛEДУET BЫBOДИTЬ ИHФOPMAЦИЮ
+    PAR(Q+11)=3      ! CTEПEHЬ ПOДPOБHOCTИ BЫBOДИMOЙ ИHФOPMAЦИИ ( OT 0 ДO 3 )
+! ВЫЗОВ МЕТОДА
+    CALL A83(N,X,A,B,F,GRAD,AGS,Y,G1,Q,PAR,FNLP)
+END PROGRAM VA83

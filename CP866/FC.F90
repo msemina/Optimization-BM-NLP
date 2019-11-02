@@ -1,0 +1,35 @@
+SUBROUTINE F(X,Y,J)
+!       PˆMEP O„ƒOTOBKˆ O„POƒPAMM› PAC—ETA –E‹EBO‰
+!    ”“HK–ˆˆ ˆ OƒPAHˆ—EHˆ‰ „‹Ÿ ‡A„A—ˆ “C‹OBHO‰ OTˆMˆ‡A–ˆˆ
+!  ( BAPˆAHT E‡ ŸBHOƒO “—ETA APA‹‹E‹EˆE„H›X OƒPAHˆ—EHˆ‰ )
+!   N,M1 - OPE„E‹ŸžT PA‡MEPHOCTœ ‡A„A—ˆ
+    COMMON /A1/ M1,N
+!   NF - C—ET—ˆK B›—ˆC‹EHˆ‰ ”“HK–ˆˆ ˆ OƒPAHˆ—EHˆ‰
+    COMMON /A10/ NF
+!   X - BEKTOP BAPœˆP“EM›X EPEMEHH›X
+!   Y - BEKTOP ‡HA—EHˆ‰ KPˆTEPˆŸ ˆ OƒPAHˆ—EHˆ‰
+    INTEGER::M1,N,NF,J
+    REAL(8),DIMENSION(N)::X
+    REAL(8),DIMENSION(M1)::Y
+!   EC‹ˆ J < 0,TO B›—ˆC‹ŸEM  –E‹EB“ž ”“HK–ˆž ˆ BCE OƒPAHˆ—EHˆŸ
+!   EC‹ˆ J = 0,TO B›—ˆC‹ŸEM  –E‹EB“ž ”“HK–ˆž
+!   EC‹ˆ J > 0,TO B›—ˆC‹ŸEM  J-OE  OƒPAHˆ—EHˆE
+    IF(J==0.OR.J==-1)THEN
+        Y(M1)=100 * (X(2) - X(1)**2 )**2 + (1 - X(1))**2
+        NF=NF+1
+    END IF
+    IF(J==1.OR.J==-1)THEN
+        Y(1)=(X(1)-1.D0)**2 + (X(2)-1.D0)**2 - 4
+        NF=NF+1
+    END IF
+    IF(J==2.OR.J==-1)THEN
+        Y(2)=-X(1)
+        NF=NF+1
+    END IF
+    IF(J==3.OR.J==-1)THEN
+        Y(3)=-X(2)
+        NF=NF+1
+    END IF
+!
+    RETURN
+END SUBROUTINE F

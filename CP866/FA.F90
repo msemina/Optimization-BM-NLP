@@ -1,0 +1,13 @@
+FUNCTION F(X,FNLP)
+! PˆMEP O„ƒOTOBKˆ ”“HK–ˆˆ „‹Ÿ ‡A„A—ˆ E‡“C‹OBHO‰ MˆHˆMˆ‡A–ˆˆ
+!                ( ”“Š–ˆŸ Ž‡…ŽŠ€ )
+    COMMON /C/ NF
+    REAL(8), DIMENSION(2)::X
+    REAL(8)::F
+    INTEGER::NF
+! C—ET—ˆK B›—ˆC‹EHˆ‰ ”“HK–ˆˆ
+    NF=NF+1
+! PAC—ET MˆHˆMˆ‡ˆP“EMO‰ ”“HK–ˆˆ
+    F=100 * (X(2) - X(1)**2 )**2 + (1 - X(1))**2
+    RETURN
+END FUNCTION F

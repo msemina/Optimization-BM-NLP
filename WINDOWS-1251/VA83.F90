@@ -1,0 +1,57 @@
+! TECTÈPOBAHÈE METOÄOB ÈÇ ÏAKETA ÁM METOÄ HÜÞTOHA (AËÃOPÈTM ÁÈPÞKOBA A.Ã.) (A83)
+PROGRAM VA83
+! XAPAKTEPÈCTÈKA ÏAPAMETPOB ÏPOÃPAMMÛ METOÄA
+    ! N - PAÇMEPHOCTÜ ÇAÄA×È
+    ! X - BEKTOP ÓÏPABËßEMÛX ÏEPEMEHHÛX
+    ! A - BEKTOP ËEBÛX ÃPAHÈÖ ÈÇMEHEHÈß ÓÏPABË. ÏEPEMEHHÛX
+    ! B - BEKTOP ÏPABÛX ÃPAHÈÖ ÈÇMEHEHÈß ÓÏPABË.ÏEPEMEHHÛX
+    ! F - ÈMß ÏOÄÏPOÃPAMMÛ TÈÏA FUNCTION ÄËß BÛ×ÈCËEHÈß ÇHA×EHÈß KPÈTEPÈß
+    ! GRAD - ÈMß ÏOÄÏPOÃPAMMÛ TÈÏA SUBROUTINE ÄËß BÛ×ÈCËEHÈß ÃPAÄÈEHTA (ÈCÏOËÜÇÓETCß CBOß BCTPOEHHAß ÏPOÃPAMMA BÛ×ÈCËEHÈß ÃPAÄÈEHTA)
+    ! AGS - ÈMß ÏOÄÏPOÃPAMMÛ TÈÏA SUBROUTINE ÄËß PAC×ETA MATPÈÖÛ BTOPÛX ÏPOÈÇBOÄHÛX (HE ÈCÏOËÜÇÓETCß)
+    ! Y - ÇHA×EHÈE KPÈTEPÈß
+    ! G1 - BEKTOP ÇHA×EHÈÉ ÏPOÈÇBOÄHÛX ÔÓHKÖÈÈ F
+    ! Q - ÏAPAMETP C ÔÈKCÈPOBAHHÛM ÇHA×EHÈEM ( = 0)
+    ! PAR - BEKTOP ÏAPAMETPOB METOÄA
+    ! FNLP - ÔÈKCÈPOBAHHOE ÈMß ÏOÄÏPOÃPAMMÛ
+! OÏÈCAHÈE ÏAPAMETPOB ÏPOÃPAMMÛ METOÄA
+    ! OÏÈCAHÈE OÁÙÈX OÁËACTEÉ METOÄA
+    COMMON /A830/ M1
+    COMMON /A831/ HESP
+    COMMON /A832/ G2
+    COMMON /A833/ P1
+    COMMON /A834/ P2
+    COMMON /A835/ XV
+    COMMON /A836/ FV
+    COMMON /A837/ XT
+    COMMON /A838/ TR
+    COMMON /A839/ L1
+    REAL(8)::F,FNLP,Y
+    INTEGER::Q
+    ! PAÇMEPHOCTÜ MACCÈBOB X,A,B,G1 PABHA N
+    REAL(8),DIMENSION(2)::X,A,B,G1
+    REAL(8),DIMENSION(40)::PAR
+    ! PAÇMEPHOCTÜ BCEX MACCÈBOB = N
+    REAL(8),DIMENSION(2)::HESP,G2,P1,P2,XV,FV,XT,TR,L1,M1
+    EXTERNAL F,FNLP,GRAD,AGS
+! ÈCXOÄHÛE ÄAHHÛE ÇAÄA×È
+    ! PAÇMEPHOCTÜ ÇAÄA×È
+    N=2
+    ! HA×AËÜHAß TO×KA
+    X(1)=-1.0
+    X(2)=-1.0
+! ÇAÄAHÈE ÏAPAMETPOB METOÄA
+    Q=0
+    PAR(Q+1)=0.0001  ! TO×HOCTÜ PEØEHÈß ÇAÄA×È ÏO HOPME ÃPAÄÈEHTA
+    PAR(Q+2)=20      ! MAKCÈMAËÜHOE ×ÈCËO ØAÃOB, KOTOPOE MOÆHO CÄEËATÜ
+    PAR(Q+3)=0       ! BÛXOÄHOÉ ÏAPAMETP
+    PAR(Q+4)=0       ! ÏPÈÇHAK HA×AËÜHOÉ OÏPEÄEËEHHOCTÈ ÏAPAMETPOB Y È G1 ( 0,1 ÈËÈ 2 )
+    PAR(Q+5)=0.001   ! HA×AËÜHÛÉ ØAÃ CÏÓCKA BÄOËÜ ÃPAÄÈEHTA
+    PAR(Q+6)=0.49    ! MAÆOPAHTA ÃOËÄCTEÉHA ( B ÈHTEPBAËE [0.000001;0.499999] )
+    PAR(Q+7)=0       ! KOËÈ×ECTBO ÈTEPAÖÈÉ ÄËß ÏOCTPOEHÈß TEKÓÙEÃO HAÏPABËEHÈß ÏOÈCKA ÝKCTPEMÓMA; ECËÈ =0 ,TO ÄEËAETCß N ÈTEPAÖÈÉ
+    PAR(Q+8)=2       ! ÏOPßÄOK ÄÈÔÔEPEHÖÈPOBAHÈß ( = 1 ÈËÈ 2 )
+    PAR(Q+9)=0.00001 ! ØAÃ KOHE×HO-PAÇHOCTHOÉ AÏÏPOKCÈMAÖÈÈ ÏPOÈÇBOÄHÛX
+    PAR(Q+10)=1      ! ×ÈCËO ÓÄA×HÛX ØAÃOB, ×EPEÇ KOTOPOE  CËEÄÓET BÛBOÄÈTÜ ÈHÔOPMAÖÈÞ
+    PAR(Q+11)=3      ! CTEÏEHÜ ÏOÄPOÁHOCTÈ BÛBOÄÈMOÉ ÈHÔOPMAÖÈÈ ( OT 0 ÄO 3 )
+! ÂÛÇÎÂ ÌÅÒÎÄÀ
+    CALL A83(N,X,A,B,F,GRAD,AGS,Y,G1,Q,PAR,FNLP)
+END PROGRAM VA83
