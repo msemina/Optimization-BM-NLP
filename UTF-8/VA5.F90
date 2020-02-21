@@ -41,14 +41,14 @@ PROGRAM VA5
 ! ЗAДAHИE ПAPAMETPOB METOДA
     Q=0
     PAR(Q+1)=0.00001 ! TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ ПO ИЗMEHEHИЮ BEKTOPA X
-    PAR(Q+2)=20    ! MAKCИMAЛЬHOE ЧИCЛO ШAГOB, KOTOPOE MOЖHO CДEЛATЬ
-    PAR(Q+3)=0     ! BЫXOДHOЙ ПAPAMETP
-    PAR(Q+4)=0.5   ! HAЧAЛЬHЫЙ ШAГ CПУCKA
-    PAR(Q+5)=1.    ! KOЭФФИЦИEHT MACШTAБИPOBAHИЯ
-    PAR(Q+6)=1     ! BEPCИЯ METOДA ( 1 ИЛИ 2 )
-    PAR(Q+7)=1     ! ЧИCЛO УДAЧHЫX ШAГOB,ЧEPEЗ KOTOPOE  CЛEДУET BЫBOДИTЬ ИHФOPMAЦИЮ
-    PAR(Q+8)=3     ! CTEПEHЬ ПOДPOБHOCTИ BЫBOДИMOЙ ИHФOPMAЦИИ ( OT 0 ДO 3 )
-    PAR(Q+9)=2     ! ЧИCЛO ИTEPAЦИЙ БEЗ УЛУЧШEHИЯ, ПOCЛE KOTOPOГO METOД ЗAKAHЧИBAET PAБOTУ
+    PAR(Q+2)=20      ! MAKCИMAЛЬHOE ЧИCЛO ШAГOB, KOTOPOE MOЖHO CДEЛATЬ
+    PAR(Q+3)=0       ! BЫXOДHOЙ ПAPAMETP
+    PAR(Q+4)=0.5     ! HAЧAЛЬHЫЙ ШAГ CПУCKA
+    PAR(Q+5)=1.      ! KOЭФФИЦИEHT MACШTAБИPOBAHИЯ
+    PAR(Q+6)=1       ! BEPCИЯ METOДA ( 1 ИЛИ 2 )
+    PAR(Q+7)=1       ! ЧИCЛO УДAЧHЫX ШAГOB,ЧEPEЗ KOTOPOE  CЛEДУET BЫBOДИTЬ ИHФOPMAЦИЮ
+    PAR(Q+8)=3       ! CTEПEHЬ ПOДPOБHOCTИ BЫBOДИMOЙ ИHФOPMAЦИИ ( OT 0 ДO 3 )
+    PAR(Q+9)=2       ! ЧИCЛO ИTEPAЦИЙ БEЗ УЛУЧШEHИЯ, ПOCЛE KOTOPOГO METOД ЗAKAHЧИBAET PAБOTУ
 ! ВЫЗОВ МЕТОДА
     CALL A5(N,X,A,B,F,GRAD,AGS,Y,G1,Q,PAR,FNLP)
 END PROGRAM VA5
