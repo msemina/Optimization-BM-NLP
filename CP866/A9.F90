@@ -100,7 +100,7 @@ SUBROUTINE A9(N,X,A,B,F,GRAD,AGS,Y,G1,Q,PAR,FNLP)
                 K=K+1
                 KK=K
                 K1=0
-            END DO
+            END IF
             ! B›—ˆC‹EHˆE BEKTOPA PACTŸ†EHˆŸ
             DO I=1,N
                 G2(I)=0.D0

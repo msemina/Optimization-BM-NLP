@@ -67,7 +67,7 @@ SUBROUTINE C8(N,L,M,X,A,B,P,F,CGR,CGS,ZNFUNK,PAR,Q,UNCONS)
                 ACTIV(MACTIV)=I
                 IF(P(I)<CONST1) P(I)=NACHDV
             END IF
-        END IF
+        END DO
     END IF
     N4=N3+MACTIV
 ! OCHOBHÛE ÄEÉCTBÈß METOÄA HÜÞTOHA ÇAÄAHÈE ÇHA×EHÈÉ  XPR,DVOY
