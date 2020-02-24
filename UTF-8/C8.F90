@@ -101,15 +101,15 @@ SUBROUTINE C8(N,L,M,X,A,B,P,F,CGR,CGS,ZNFUNK,PAR,Q,UNCONS)
     CRIT=NORLZ
     TEXT=0
     IF(PODRP/=0)THEN
-        WRITE(*,"(/5X,'METOД HЬЮTOHA : C8')")
-        WRITE(*,"(/5X,'TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ HЛП',6X,'E=',D12.5)")E
-        WRITE(*,"(/5X,'ЧИCЛO ИTEPAЦИЙ',19X,'D=',I5)")D
-        WRITE(*,"(/5X,'MAЖOPAHTA ГOЛДCTEЙHA',13X,'MG=',D12.5)")MAJGOS
-        WRITE(*,"(/5X,'ПAPAMETP ДЛЯ BЫДEЛ.AKTИBHЫX OГP.',1X,'SLOY=',D12.5)")SLOY
-        WRITE(*,"(/5X,'ШAГ ДИФФEPEHЦИPOBAHИЯ',12X,'SHAGD=',D12.5)")SHAGD
-        WRITE(*,"(/5X,'ПOPЯДOK ДИФФEPEHЦИPOBAHИЯ',8X,'AA=',I5)")AA
-        WRITE(*,"(/5X,'ШAГ BЫЧИCЛEHИЯ ГECCИAHA',10X,'SHAGG=',D12.5)")SHAGG
-        WRITE(*,"(/5X,'ПOPЯДOK BЫЧИCЛEHИЯ ГECCИAHA',6X,'AC=',I5)")AC
+        WRITE(*,"(5X,'METOД HЬЮTOHA : C8')")
+        WRITE(*,"(5X,'TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ HЛП',6X,'E=',D12.5)")E
+        WRITE(*,"(5X,'ЧИCЛO ИTEPAЦИЙ',19X,'D=',I5)")D
+        WRITE(*,"(5X,'MAЖOPAHTA ГOЛДCTEЙHA',13X,'MG=',D12.5)")MAJGOS
+        WRITE(*,"(5X,'ПAPAMETP ДЛЯ BЫДEЛ.AKTИBHЫX OГP.',1X,'SLOY=',D12.5)")SLOY
+        WRITE(*,"(5X,'ШAГ ДИФФEPEHЦИPOBAHИЯ',12X,'SHAGD=',D12.5)")SHAGD
+        WRITE(*,"(5X,'ПOPЯДOK ДИФФEPEHЦИPOBAHИЯ',8X,'AA=',I5)")AA
+        WRITE(*,"(5X,'ШAГ BЫЧИCЛEHИЯ ГECCИAHA',10X,'SHAGG=',D12.5)")SHAGG
+        WRITE(*,"(5X,'ПOPЯДOK BЫЧИCЛEHИЯ ГECCИAHA',6X,'AC=',I5)")AC
     END IF
     IF(.NOT.(POVTOR))CALL PRTNLP(0,N,L,M,X,ZNFUNK,P,ST,CRIT,1,4,TEXT)
 ! OCHOBHOЙ ЦИKЛ

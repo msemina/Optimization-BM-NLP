@@ -48,14 +48,14 @@ SUBROUTINE A9(N,X,A,B,F,GRAD,AGS,Y,G1,Q,PAR,FNLP)
     NG=NORMA(GN,N)
 ! ПEЧATЬ ИCXOДHЫX ДAHHЫX
     IF(PODRP/=0)THEN
-        WRITE(*,"(/5X,'MИHИMИЗAЦИЯ METOДOM ЭЛЛИПCOИДOB. BEPCИЯ ',I1)")NS
-        WRITE(*,"(/5X,'TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ',17X,'E=',D11.4)")E
-        WRITE(*,"(/5X,'ЧИCЛO ИTEPAЦИЙ',26X,'D=',I4)")D
-        WRITE(*,"(/5X,'PAДИУC HAЧAЛЬHOГO ШAPA',18X,'R=',D11.4)")C
-        WRITE(*,"(/5X,'TOЧHOCTЬ OДHOMEPHOЙ MИHИMИЗAЦИИ',9X,'EC=',D11.4)")EC
-        WRITE(*,"(/5X,'MИHИMAЛЬHЫЙ OБ''EM ЭЛЛИПCOИДA',12X,'S=',D11.4)")S
-        WRITE(*,"(/5X,'ПOPЯДOK ДИФФEPEHЦИPOBAHИЯ',15X,'P=',I1)")AC
-        WRITE(*,"(/5X,'ШAГ ДИФФEPEHЦИPOBAHИЯ',19X,'H=',D11.4)")H
+        WRITE(*,"(5X,'MИHИMИЗAЦИЯ METOДOM ЭЛЛИПCOИДOB. BEPCИЯ ',I1)")NS
+        WRITE(*,"(5X,'TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ',17X,'E=',D11.4)")E
+        WRITE(*,"(5X,'ЧИCЛO ИTEPAЦИЙ',26X,'D=',I4)")D
+        WRITE(*,"(5X,'PAДИУC HAЧAЛЬHOГO ШAPA',18X,'R=',D11.4)")C
+        WRITE(*,"(5X,'TOЧHOCTЬ OДHOMEPHOЙ MИHИMИЗAЦИИ',9X,'EC=',D11.4)")EC
+        WRITE(*,"(5X,'MИHИMAЛЬHЫЙ OБ''EM ЭЛЛИПCOИДA',12X,'S=',D11.4)")S
+        WRITE(*,"(5X,'ПOPЯДOK ДИФФEPEHЦИPOBAHИЯ',15X,'P=',I1)")AC
+        WRITE(*,"(5X,'ШAГ ДИФФEPEHЦИPOBAHИЯ',19X,'H=',D11.4)")H
     END IF
     IF(D/=0)THEN
         CALL PRTUCM(0,NF,N,X,Y,NG,SHAGP,PODRP)

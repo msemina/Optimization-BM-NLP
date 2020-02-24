@@ -44,13 +44,13 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
     CALL GRADT(N,F,NG1,X,G1,H,1,N,P2,FNLP)
 ! ПEЧATЬ ИCXOДHЫX ДAHHЫX
     IF(PODRP/=0)THEN
-        WRITE(*,"(/5X,'MИHИMИЗAЦИЯ METOДOM HЬЮTOHA.BEPCИЯ 2.')")
-        WRITE(*,"(/5X,'PAЗMEPHOCTЬ ПPOCTPAHCTBA ПEPEMEHHЫX',2X,'N=',I3)")N
-        WRITE(*,"(/5X,'TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ',14X,'E=',D11.4)")E
-        WRITE(*,"(/5X,'ЧИCЛO ИTEPAЦИЙ',23X,'D=',I5)")D
-        WRITE(*,"(/5X,'HAЧAЛЬHЫЙ ШAГ CПУCKA',17X,'ST=',D11.4)")ST
-        WRITE(*,"(/5X,'MAЖOPAHTA ГOЛДCTEЙHA',17X,'E1=',D11.4)")E1
-        WRITE(*,"(/5X,'ШAГ ДИФФEPEHЦИPOBAHИЯ',17X,'H=',D11.4,/)")H
+        WRITE(*,"(5X,'MИHИMИЗAЦИЯ METOДOM HЬЮTOHA.BEPCИЯ 2.')")
+        WRITE(*,"(5X,'PAЗMEPHOCTЬ ПPOCTPAHCTBA ПEPEMEHHЫX',2X,'N=',I3)")N
+        WRITE(*,"(5X,'TOЧHOCTЬ PEШEHИЯ ЗAДAЧИ',14X,'E=',D11.4)")E
+        WRITE(*,"(5X,'ЧИCЛO ИTEPAЦИЙ',23X,'D=',I5)")D
+        WRITE(*,"(5X,'HAЧAЛЬHЫЙ ШAГ CПУCKA',17X,'ST=',D11.4)")ST
+        WRITE(*,"(5X,'MAЖOPAHTA ГOЛДCTEЙHA',17X,'E1=',D11.4)")E1
+        WRITE(*,"(5X,'ШAГ ДИФФEPEHЦИPOBAHИЯ',17X,'H=',D11.4,/)")H
     END IF
     CALL PRTUCM(0,NF,N,X,Y,NG1,SHAGP,PODRP)
     K=1
@@ -125,6 +125,7 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
             END DO
             IF(C0<E3) C0=E3
             FC=F(XV,FNLP)
+            TMP=2
         END IF
         IF(TMP==2)THEN
             C1=0

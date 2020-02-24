@@ -125,6 +125,7 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
             END DO
             IF(C0<E3) C0=E3
             FC=F(XV,FNLP)
+            TMP=2
         END IF
         IF(TMP==2)THEN
             C1=0
