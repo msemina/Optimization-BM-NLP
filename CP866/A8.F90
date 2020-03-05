@@ -1,6 +1,6 @@
-! METOÐ” HÐ¬Ð®TOHA. BEPCÐ˜Ð¯ 2.
+! METO„ HœžTOHA. BEPCˆŸ 2.
 SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
-! ÐžÐŸÐ˜Ð¡ÐÐÐ˜Ð• ÐŸÐ•Ð Ð•ÐœÐ•ÐÐÐ«Ð¥
+! Žˆ‘€ˆ… ……Œ…›•
     COMMON /C/    NF
     COMMON /A81/  HES
     COMMON /A82/  P1
@@ -18,7 +18,7 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
     REAL(8)::C,E,H,NG1,E1,E2,E3,Z1,Z2,Z3,Z4,ST,C0,C1,C2,C3,C4,CMIN,FC,F1,F2,F3,F4,FMIN,F5,F6,Z,F,Y
     INTEGER::D,K,KK,I,J,N1,N2,PODRP,SHAGP,INF,NF,Q
     LOGICAL::GRAT
-    ! Ð’Ð’Ð•Ð”ÐÐœ Ð”ÐžÐŸÐžÐ›ÐÐ˜Ð¢Ð•Ð›Ð¬ÐÐ£Ð® ÐŸÐ•Ð Ð•ÐœÐ•ÐÐÐ£Ð® Ð”Ð›Ð¯ Ð—ÐÐœÐ•ÐÐ« Ð‘Ð•Ð—Ð£Ð¡Ð›ÐžÐ’ÐÐ«Ð¥ ÐŸÐ•Ð Ð•Ð¥ÐžÐ”ÐžÐ’
+    ! ‚‚…„ðŒ „ŽŽ‹ˆ’…‹œ“ž ……Œ…“ž „‹Ÿ ‡€Œ…› …‡“‘‹Ž‚›• ……•Ž„Ž‚
     INTEGER::TMP
     EXTERNAL F,FNLP
 !-------------------------------------------------------------------------------------------------------------------
@@ -42,20 +42,20 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
     END DO
     IF(INF==0.OR.INF==2) Y=F(X,FNLP)
     CALL GRADT(N,F,NG1,X,G1,H,1,N,P2,FNLP)
-! ÐŸEÐ§ATÐ¬ Ð˜CXOÐ”HÐ«X Ð”AHHÐ«X
+! E—ATœ ˆCXO„H›X „AHH›X
     IF(PODRP/=0)THEN
-        WRITE(*,"(5X,'MÐ˜HÐ˜MÐ˜Ð—AÐ¦Ð˜Ð¯ METOÐ”OM HÐ¬Ð®TOHA.BEPCÐ˜Ð¯ 2.',/)")
-        WRITE(*,"(5X,'PAÐ—MEPHOCTÐ¬ ÐŸPOCTPAHCTBA ÐŸEPEMEHHÐ«X',2X,'N=',I3)")N
-        WRITE(*,"(5X,'TOÐ§HOCTÐ¬ PEÐ¨EHÐ˜Ð¯ Ð—AÐ”AÐ§Ð˜',14X,'E=',D11.4)")E
-        WRITE(*,"(5X,'Ð§Ð˜CÐ›O Ð˜TEPAÐ¦Ð˜Ð™',23X,'D=',I5)")D
-        WRITE(*,"(5X,'HAÐ§AÐ›Ð¬HÐ«Ð™ Ð¨AÐ“ CÐŸÐ£CKA',17X,'ST=',D11.4)")ST
-        WRITE(*,"(5X,'MAÐ–OPAHTA Ð“OÐ›Ð”CTEÐ™HA',17X,'E1=',D11.4)")E1
-        WRITE(*,"(5X,'Ð¨AÐ“ Ð”Ð˜Ð¤Ð¤EPEHÐ¦Ð˜POBAHÐ˜Ð¯',17X,'H=',D11.4,/)")H
+        WRITE(*,"(5X,'MˆHˆMˆ‡A–ˆŸ METO„OM HœžTOHA.BEPCˆŸ 2.',/)")
+        WRITE(*,"(5X,'PA‡MEPHOCTœ POCTPAHCTBA EPEMEHH›X',2X,'N=',I3)")N
+        WRITE(*,"(5X,'TO—HOCTœ PE˜EHˆŸ ‡A„A—ˆ',14X,'E=',D11.4)")E
+        WRITE(*,"(5X,'—ˆC‹O ˆTEPA–ˆ‰',23X,'D=',I5)")D
+        WRITE(*,"(5X,'HA—A‹œH›‰ ˜Aƒ C“CKA',17X,'ST=',D11.4)")ST
+        WRITE(*,"(5X,'MA†OPAHTA ƒO‹„CTE‰HA',17X,'E1=',D11.4)")E1
+        WRITE(*,"(5X,'˜Aƒ „ˆ””EPEH–ˆPOBAHˆŸ',17X,'H=',D11.4,/)")H
     END IF
     CALL PRTUCM(0,NF,N,X,Y,NG1,SHAGP,PODRP)
     K=1
     TMP=0
-! HAÐ§AÐ›O OCHOBHOÐ“O Ð¦Ð˜KÐ›A
+! HA—A‹O OCHOBHOƒO –ˆK‹A
     DO
         IF(TMP==0)THEN
             IF(.NOT.(K<=D.AND.NG1>E)) EXIT
@@ -79,7 +79,7 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
             END DO
             CALL DMINV(HES,N,DET,L1,M1)
             IF(DET==0)THEN
-                WRITE(*,"(5X,'Ð“ECCÐ˜AH BÐ«POÐ–Ð”EH')")
+                WRITE(*,"(5X,'ƒECCˆAH B›PO†„EH')")
                 GRAT=.TRUE.
                 TMP=1
             ELSE
@@ -160,7 +160,7 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
                     GRAT=.TRUE.
                     TMP=1
                 ELSE
-                    WRITE(*,"(10X,'OÐ”HOMEPHÐ«Ð™ ÐŸOÐ˜CK HEÐ£Ð”AÐ§EH')")
+                    WRITE(*,"(10X,'O„HOMEPH›‰ OˆCK HE“„A—EH')")
                     RETURN
                 END IF
             END IF
@@ -188,7 +188,7 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
                     GRAT=.TRUE.
                     TMP=1
                 ELSE
-                    WRITE(*,"(10X,'OÐ”HOMEPHÐ«Ð™ ÐŸOÐ˜CK HEÐ£Ð”AÐ§EH')")
+                    WRITE(*,"(10X,'O„HOMEPH›‰ OˆCK HE“„A—EH')")
                     RETURN
                 END IF
             END IF
@@ -311,8 +311,8 @@ SUBROUTINE A8(N,X,A,B,F,AGR,AGS,Y,G1,Q,PAR,FNLP)
             TMP=0
         END IF
     END DO
-! KOHEÐ¦ OCHOBHOÐ“O Ð¦Ð˜KÐ›A
-    IF(PODRP/=0)WRITE(*,"(/5X,'OÐŸTÐ˜MAÐ›Ð¬HAÐ¯ TOÐ§KA')")
+! KOHE– OCHOBHOƒO –ˆK‹A
+    IF(PODRP/=0)WRITE(*,"(/5X,'OTˆMA‹œHAŸ TO—KA')")
     CALL PRTUCM(K,NF,N,X,Y,NG1,1,3)
     PAR(3+Q)=KK
     RETURN
