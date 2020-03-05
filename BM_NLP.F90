@@ -10,7 +10,7 @@ MODULE BM_NLP
       REAL(8),DIMENSION(N)::X,GR
       REAL(8)::H,Y,F
 	  END SUBROUTINE GRAD
-! МЕТОДЫ БЕЗУСЛОВНОЙ МИНИМИЗАЦИИ
+!
     SUBROUTINE AP1(N,X,A,B,F,GRAD,AGS,Y,G1,Q,PAR,FNLP) 
       REAL(8)::Y,F
       INTEGER::Q
