@@ -10,7 +10,7 @@ MODULE BM_NLP
       REAL(8),DIMENSION(N)::X,GR
       REAL(8)::H,Y,F
 	  END SUBROUTINE GRAD
-!
+
     SUBROUTINE AP1(N,X,A,B,F,GRAD,AGS,Y,G1,Q,PAR,FNLP) 
       REAL(8)::Y,F
       INTEGER::Q
@@ -98,7 +98,7 @@ MODULE BM_NLP
       REAL(8), DIMENSION(40)::PAR
 	    EXTERNAL F,FNLP,GRAD,AGS
     END SUBROUTINE A84
-!---------------------------------------------------------------------------------------------
+!-----------------------------------------------------------------------------------------------------
 	  SUBROUTINE UNCONS
     END SUBROUTINE
 
