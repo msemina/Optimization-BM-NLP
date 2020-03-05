@@ -1,0 +1,101 @@
+! ÈCÏOËÜÇOBAHÈE METOÄOB ÈÇ ÏAKETA OÏTÈMÈÇAÖÈÈ HËÏ METOÄ HÜÞTOHA  ( C8 )
+PROGRAM VC8
+! XAPAKTEPÈCTÈKA ÏAPAMETPOB ÏPOÃPAMMÛ METOÄA
+    ! N - PAÇMEPHOCTÜ BEKTOPA ÓÏPABËßEMÛX ÏEPEMEHHÛX
+    ! L - ×ÈCËO OÃPAHÈ×EHÈÉ TÈÏA PABEHCTB
+    ! M - OÁÙEE ×ÈCËO OÃPAHÈ×EHÈÉ
+    ! X - BEKTOP ÓÏPABËßEMÛX ÏEPEMEHHÛX
+    ! A - BEKTOP ËEBÛX ÃPAHÈÖ ÈÇMEHEHÈß ÓÏPABË. ÏEPEMEHHÛX
+    ! B - BEKTOP ÏPABÛX ÃPAHÈÖ ÈÇMEHEHÈß ÓÏPABË.ÏEPEMEHHÛX
+    ! P - BEKTOP ÄBOÉCTBEHHÛX ÏEPEMEHHÛX
+    ! F - ÈMß ÏOÄÏPOÃPAMMÛ TÈÏA SUBROUTINE ÄËß BÛ×ÈCËEHÈß
+    ! ÇHA×EHÈß KPÈTEPÈß È OÃPAHÈ×EHÈÉ
+    ! CGR - ÈMß ÏOÄÏPOÃPAMMÛ TÈÏA SUBROUTINE ÄËß BÛ×ÈCËEHÈß ÃPAÄÈEHTOB ÖEËEBOÉ ÔÓHKÖÈÈ È OÃPAHÈ×EHÈÉ
+    ! CGS - ÈMß ÏOÄÏPOÃPAMMÛ TÈÏA SUBROUTINE ÄËß PAC×ETA MATPÈÖÛ BTOPÛX ÏPOÈÇBOÄHÛX ÖEËEBOÉ ÔÓHKÖÈÈ È OÃPAHÈ×EHÈÉ
+    ! Y - BEKTOP ÇHA×EHÈÉ KPÈTEPÈß È OÃPAHÈ×EHÈÉ
+    ! PAR - BEKTOP ÏAPAMETPOB METOÄA
+    ! Q - ÏAPAMETP C ÔÈKCÈPOBAHHÛM ÇHA×EHÈEM ( = 20)
+    ! UNCONS -  ÈMß ÏOÄÏPOÃPAMMÛ METOÄA ÁEÇÓCËOBHOÉ MÈHÈMÈÇAÖÈÈ
+! OÏÈCAHÈE ÏAPAMETPOB ÏPOÃPAMMÛ METOÄA
+    ! OÏÈCAHÈE OÁÙÈX OÁËACTEÉ METOÄA
+    COMMON /A1/   M1,N,L
+    COMMON /A5/   FUNC
+    COMMON /A8/   Y1
+    COMMON /A9/   Y2
+    COMMON /A10/  NF
+    COMMON /A13/  Y11
+    COMMON /C80/  ZNFPR
+    COMMON /C81/  ACTIV
+    COMMON /C82/  XPR
+    COMMON /C83/  GR
+    COMMON /C84/  HES
+    COMMON /C85/  LZ
+    COMMON /C86/  LZZ
+    COMMON /C87/  NAPR
+    COMMON /C88/  DVOY
+    COMMON /C89/  DVPR
+    COMMON /C801/ LRAB
+    COMMON /C802/ MRAB
+    ! PAÇMEPHOCTÜ MACCÈBOB X,A,B,GR,XPR  PABHA  N
+    REAL(8),DIMENSION(2)::X,A,B,XPR,GR
+    ! PAÇMEPHOCTÜ MACCÈBA  P   PABHA  M
+    REAL(8),DIMENSION(4)::P
+    ! PAÇMEPHOCTÜ  MACCÈBOB DVOY,DVPR = M
+    REAL(8),DIMENSION(3)::DVOY,DVPR
+    ! PAÇMEPHOCTÜ  MACCÈBOB Y1,Y2,Y11,FUNC,ZNFPR,ACTIV  = M+1
+    REAL(8),DIMENSION(4)::FUNC,Y1,Y2,Y11,ZNFPR,Y
+    ! PAÇMEPHOCTÜ  MACCÈBA HES = ( N,N )
+    REAL(8),DIMENSION(2,2)::HES
+    ! PAÇMEPHOCTÜ  MACCÈBA LZZ = ( N+M,N+M )
+    REAL(8),DIMENSION(7,7)::LZZ
+    ! PAÇMEPHOCTÜ  MACCÈBOB LZ,NAPR,LRAB,MRAB = ( N+M )
+    REAL(8),DIMENSION(7)::LZ,NAPR,LRAB,MRAB
+    REAL(8),DIMENSION(40)::PAR
+    REAL(8)::F
+    INTEGER,DIMENSION(4)::ACTIV
+    INTEGER::N,L,M1,Q,M,NF
+    EXTERNAL F,CGR,CGS,UNCONS
+!
+    NF=0
+    Q=20
+! ÈCXOÄHÛE ÄAHHÛE ÇAÄA×È
+    ! PAÇMEPHOCTÜ ÇAÄA×È
+    M1=4
+    M=M1-1
+    L=0
+    N=2
+    ! HA×AËÜHAß TO×KA
+    X(1)=0.1
+    X(2)=0.7
+    X(3)=0.2
+    ! ËEBÛE ÃPAHÈÖÛ ÓÏPABË. ÏEPEMEHHÛX ÏO KAÆÄOÉ KOOPÄÈHATE
+    A(1)= -100000.
+    A(2)= -100000.
+    A(3)= -100000.
+    ! ÏPABÛE ÃPAHÈÖÛ ÓÏPABË. ÏEPEMEHHÛX ÏO KAÆÄOÉ KOOPÄÈHATE
+    B(1)=100000.
+    B(2)=100000.
+    B(3)=100000.
+    ! ÄBOÉCTBEHHÛX ÏEPEMEHHÛX
+    P(1)=1.D0
+    P(2)=1.D0
+    P(3)=0.D0
+    P(4)=0.D0
+    P(5)=0.D0
+! ÇAÄAHÈE ÏAPAMETPOB METOÄA
+    PAR(1)=0.0001  ! TO×HOCTÜ PEØEHÈß ÇAÄA×È ÏO HOPME ÃPAÄÈEHTA ÔÓHKÖÈÈ ËAÃPAHÆA
+    PAR(2)=15      ! MAKCÈMAËÜHO BOÇMOÆHOE ×ÈCËO ÈTEPAÖÈÉ
+    PAR(3)=0       ! ÔAKTÈ×ECKÈ CÄEËAHHOE ×ÈCËO ÈTEPAÖÈÉ
+    PAR(4)=0.8     ! ÏAPAMETP BÛÁOPA ØAÃA ÄBÈÆEHÈß ( MAÆOPAHTA ÃOËÄCTEÉHA )
+    PAR(5)=0.01    ! ÏAPAMETP BÛÄEËEHÈß AKTÈBHÛX OÃPAHÈ×EHÈÉ
+    PAR(6)=0.1     ! ÇHA×EHÈE,ÏPÈCBAÈBAEMOE ÄBOÉCTBEHHÛM ÏEPEMEHHÛM, COOTBETCTBÓÞÙÈM OÃPAHÈ×EHÈßM TÈÏA HEPABEHCTBA, HA×AËÜHÛE ÇHA×EHÈß KOTOPÛX MEHÜØE 10** ( -18 )
+    PAR(7)=0.1     ! MÈHÈMAËÜHOE ÇHA×EHÈE ÄBOÉCTBEHHOÉ ÏEPEMEHHOÉ, ÏPÈ KOTOPOM OÃPAHÈ×EHÈE TÈÏA HEPABEHCTBA EÙE C×ÈTAETCß AKTÈBHÛM
+    PAR(8)=0.0001  ! ØAÃ ×ÈCËEHHOÃO BÛ×ÈCËEHÈß ÃPAÄÈEHTA
+    PAR(9)=2       ! HOMEP PAÇHOCTHOÉ CXEMÛ ×ÈCËEHHOÃO BÛ×ÈCËEHÈß ÃPAÄÈEHTA ( = 1 ÈËÈ 2 )
+    PAR(10)=0.0001 ! ØAÃ ×ÈCËEHHOÃO BÛ×ÈCËEHÈß ÃECCÈAHA
+    PAR(11)=1      ! HOMEP PAÇHOCTHOÉ CXEMÛ ×ÈCËEHHOÃO BÛ×ÈCËEHÈß ÃECCÈAHA  ( = 1,2 ÈËÈ 3 )
+    PAR(12)=1      ! ×ÈCËO ØAÃOB,×EPEÇ KOTOPOE  CËEÄÓET BÛBOÄÈTÜ ÈHÔOPMAÖÈÞ
+    PAR(13)=4      ! CTEÏEHÜ ÏOÄPOÁHOCTÈ BÛBOÄÈMOÉ ÈHÔOPMAÖÈÈ ( OT 0 ÄO 4 )
+! ÂÛÇÎÂ ÌÅÒÎÄÀ
+    CALL C8(N,L,M,X,A,B,P,F,CGR,CGS,Y,PAR,Q,UNCONS)
+END PROGRAM VC8
