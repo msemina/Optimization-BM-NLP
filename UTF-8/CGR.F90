@@ -1,4 +1,4 @@
-﻿SUBROUTINE CGR(F,X,Y,M,GR,K,N1,N2,H,A)
+SUBROUTINE CGR(F,X,Y,M,GR,K,N1,N2,H,A)
 ! ПOДПPOГPAMMA ЧИCЛEHHOГO BЫЧИCЛEHИЯ ГPAДИEHTA ДЛЯ METOДOB HЛП
 ! ОПИСАНИЕ ПЕРЕМЕННЫХ
     COMMON /A1/ M1,N
@@ -13,7 +13,7 @@
     DO J=N1,N2
         XA=X(J);XB=H*(1+0.001*DABS(XA));X(J)=XA+XB
         CALL F(X,Y1,K)
-        IF(A==2)THEN
+        IF(A/=2)THEN
             DO I=1,M1
                 Y2(I)=Y(I)
             END DO
